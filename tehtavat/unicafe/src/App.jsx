@@ -15,6 +15,14 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  // Using const because: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
+  // feedback count
+  const all = good + neutral + bad
+  // average
+  const avg = (good - bad) / all
+  // positive %
+  const pos = good / all * 100
+
   return (
     <div>
       <h1>give feedback</h1>
@@ -25,7 +33,12 @@ const App = () => {
 
       <h2>statistics</h2>
 
-      <p>good {good}<br/> neutral {neutral}<br/> bad {bad}</p>
+      <p> good {good}<br/>
+          neutral {neutral}<br/>
+          bad {bad} <br/>
+          all {all}<br/>
+          average {avg}<br/>
+          positive {pos} %</p>
     </div>
   )
 }
