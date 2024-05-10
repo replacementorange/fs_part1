@@ -19,14 +19,24 @@ const Statistics = ({good, neutral, bad}) => {
   // positive %
   const pos = good / all * 100
 
-  return (
-    <p> good {good}<br/>
-        neutral {neutral}<br/>
-        bad {bad} <br/>
-        all {all}<br/>
-        average {avg}<br/>
-        positive {pos} %</p>
-  )
+  // if there is no feedback, return text
+  if(all == 0) {
+    return(
+      <p>No feedback given</p>
+    )
+  }
+  // else return statistics
+  else {
+    return (
+      <p> good {good}<br/>
+          neutral {neutral}<br/>
+          bad {bad} <br/>
+          all {all}<br/>
+          average {avg}<br/>
+          positive {pos} %</p>
+    )
+  }
+
 }
 
 const App = () => {
