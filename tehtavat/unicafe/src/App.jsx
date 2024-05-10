@@ -9,12 +9,8 @@ const Button = (props) => {
   )
 }
 
-const App = () => {
-  // save clicks of each button to its own state
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
-
+// Statistics component
+const Statistics = ({good, neutral, bad}) => {
   // Using const because: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
   // feedback count
   const all = good + neutral + bad
@@ -22,6 +18,22 @@ const App = () => {
   const avg = (good - bad) / all
   // positive %
   const pos = good / all * 100
+
+  return (
+    <p> good {good}<br/>
+        neutral {neutral}<br/>
+        bad {bad} <br/>
+        all {all}<br/>
+        average {avg}<br/>
+        positive {pos} %</p>
+  )
+}
+
+const App = () => {
+  // save clicks of each button to its own state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
   return (
     <div>
@@ -33,12 +45,7 @@ const App = () => {
 
       <h2>statistics</h2>
 
-      <p> good {good}<br/>
-          neutral {neutral}<br/>
-          bad {bad} <br/>
-          all {all}<br/>
-          average {avg}<br/>
-          positive {pos} %</p>
+      <Statistics good={good} bad={bad} neutral={neutral}/>
     </div>
   )
 }
