@@ -11,11 +11,11 @@ const Button = (props) => {
 }
 
 // Statistic line component
+// https://stackoverflow.com/questions/55820297/how-to-fix-warning-validatedomnesting-div-cannot-appear-as-a-child-of
+// "You implicitly render it inside <tbody> through the lines"
 const StatisticLine = (props) => {
   return(
-  <div>
-    <p>{props.text} {props.value}</p>
-  </div>
+    <tr><td>{props.text} {props.value}</td></tr>
   )
 }
 
@@ -39,12 +39,16 @@ const Statistics = ({good, neutral, bad}) => {
   else {
     return (
       <div>
-      <StatisticLine text="good" value={good}/>
-      <StatisticLine text="neutral" value={neutral}/>
-      <StatisticLine text="bad" value={bad}/>
-      <StatisticLine text="all" value={all}/>
-      <StatisticLine text="average" value={avg}/>
-      <StatisticLine text="positive" value={pos + " %"}/>
+        <table>
+          <tbody>
+            <StatisticLine text="good" value={good}/>
+            <StatisticLine text="neutral" value={neutral}/>
+            <StatisticLine text="bad" value={bad}/>
+            <StatisticLine text="all" value={all}/>
+            <StatisticLine text="average" value={avg}/>
+            <StatisticLine text="positive" value={pos + " %"}/>
+          </tbody>
+        </table>
       </div>
     )
   }
